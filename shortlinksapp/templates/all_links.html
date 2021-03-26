@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <table>
+        <thead>
+        <tr>
+            <th><p>original link</p></th>
+            <th><p>short link</p></th>
+            <th><p>date</p></th>
+            <th><p>clicks</p></th>
+        </tr>
+        </thead>
+    {% for link in links %}
+        <tr>
+            <td><a href="{{link.orig_link}}" style="text-align: center;">{{link.orig_link}}</a></td>
+            <td><a href="{{link.short_link}}" style="text-align: center;">{{link.short_link}}</a></td>
+            <td><p>{{link.datetime}}</p></td>
+            <td><p>{{link.clicks}}</p></td>
+        </tr>
+        {% endfor %}
+    </table><br>
+{% endblock %}

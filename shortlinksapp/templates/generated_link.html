@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="px-3">
+    <h1>Link shortener</h1>
+    <p class="lead">
+    <p>Insert your link</p>
+         <div class='wrapper'>
+        <form method="post" action="{% url 'main-page' %}"><input type='text' name='link'><br>
+        <input type="submit" value="create"></form>
+    </div><br>
+    <p>New link: <a href="{{ link }}">{{ link }}</a></p>
+</main>
+{% endblock %}
