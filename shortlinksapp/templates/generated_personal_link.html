@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Link shortener</h1>
+        <form method="post" action="{% url 'personal-link' %}">
+           {% for field in form %}
+        {% if field.html_name == 'full_link' %}
+        <p>Insert your full link:</p>
+        <p>{{ field }}</p><br>
+               {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+            <br>
+        {% elif field.html_name == 'short_link' %}
+        <div class="formwrapper">
+        <p style="color: green">Insert your short link:</p>
+        <p>{{ field }}</p><br>
+        {% endif %}
+    </div>
+            {% endfor %}
+            <input type="submit" value="create" style="border-color: #138E02;">
+        </form>
+    <p>Old link: <a href="{{ full_link }}">{{ full_link }}</a></p><br>
+    <p>New link: <a href="{{ personal_link }}">{{ personal_link }}</a></p>
+{% endblock %}
